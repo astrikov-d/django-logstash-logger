@@ -42,7 +42,7 @@ Use logger inside your app:
 ```
 from logging import getLogger
 
-logger = getLogger('app_name')
+logger = getLogger('app_name_logger')
 
 logger.debug('Debug message')
 logger.info('Info message')
