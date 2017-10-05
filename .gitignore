@@ -1,0 +1,10 @@
+*.mo
+*.pyc
+*.pyo
+*.swp
+*.swo
+*~
+pip-log.txt
+/.idea/*
+
+dist
