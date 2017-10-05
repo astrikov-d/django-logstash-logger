@@ -3,7 +3,7 @@ Simple logstash-compatible logger for Django-based projects
 
 ## Installation
 
-At the moment, this packages is not distributing via PyPi, so you can install it directly from GitHub:
+At the moment, this package is not distributing via PyPi, so you can install it directly from GitHub:
 
 ```
 pip install git+https://github.com/astrikov-d/django-logstash-logger
