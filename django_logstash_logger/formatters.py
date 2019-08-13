@@ -1,4 +1,5 @@
-# coding: utf-8]
+# coding: utf-8
+import json
 import pytz
 
 import getpass
@@ -14,10 +15,14 @@ from ._compat import text_type
 class LogstashFormatter(logging.Formatter):
     template = '''[%(level)s] [%(ts)s]: app: '%(app_label)s' username: '%(username)s' args: '%(args)s' exc: '%(exc_info)s' msg: '%(msg)s' '''
     app_label = 'django_application'
+    log_format = 'plain'
+    ensure_ascii = False
     timezone = getattr(settings, 'TIME_ZONE', 'UTC')
 
     def __init__(self, *args, **kwargs):
         self.app_label = kwargs.pop('app_label', self.app_label)
+        self.log_format = kwargs.pop('log_format', self.log_format)
+        self.ensure_ascii = kwargs.pop('ensure_ascii', self.ensure_ascii)
         super(LogstashFormatter, self).__init__(*args, **kwargs)
 
     def format(self, record):
@@ -40,5 +45,8 @@ class LogstashFormatter(logging.Formatter):
 
         if hasattr(record, 'exc_info') and record.exc_info:
             context['exc_info'] = record.exc_info
+
+        if self.log_format == 'json':
+            return json.dumps(context, ensure_ascii=self.ensure_ascii)
 
         return self.template % context
