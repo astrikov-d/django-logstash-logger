@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='django-logstash-logger',
-    version='0.0.1',
+    version='0.0.2',
     description='Simple logstash-compatible log handler for Django-based projects',
     url='https://github.com/astrikov-d/django-logstash-logger',
     packages=['django_logstash_logger'],
